@@ -1,4 +1,7 @@
-interface Draft<TBase> extends Record<any, any> {
+// biome-ignore lint/suspicious/noExplicitAny: We do not really care about the shape of the
+type AnyObject = Record<any, any>;
+
+interface Draft<TBase> extends AnyObject {
 	_base: TBase;
 }
 

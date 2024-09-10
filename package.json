@@ -8,7 +8,7 @@
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
 		"prepublishOnly": "bun run check && bun run build",
-		"build": "rbxtsc --type package --includePath .",
+		"build": "rbxtsc --type package",
 		"build:tests": "rbxtsc --rojo tests.project.json --type game",
 		"sourcemap:tests": "bun run build:tests && rojo sourcemap tests.project.json --output sourcemap.json",
 		"patch-include": "bun --cwd ./tests/ patch-include.ts",

@@ -1,3 +1,7 @@
+--!strict
+--!native
+--!optimize 2
+
 local makeDraftSafe = require(script.Parent.makeDraftSafe)
 local makeDraftSafeReadOnly = require(script.Parent.makeDraftSafeReadOnly)
 

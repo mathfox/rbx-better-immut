@@ -1,3 +1,7 @@
+--!strict
+--!native
+--!optimize 2
+
 --[=[
 	@within Immut
 	@prop None None

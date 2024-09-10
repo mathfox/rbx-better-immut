@@ -1,4 +1,7 @@
 --!strict
+--!native
+--!optimize 2
+
 local Draft = require(script.Parent.Draft)
 local None = require(script.Parent.None)
 local finishDraft = require(script.Parent.finishDraft)
@@ -11,7 +14,7 @@ local isDraftable = require(script.Parent.isDraftable)
 
 -- when using this type, recipes will always need to explicitly return something.
 -- `draft` autocompletion works though, so i think this is better, but not ideal.
-type Recipe<T> = (draft: T) -> (T? | typeof(None))
+type Recipe<T> = (draft: T) -> T? | typeof(None)
 
 --[=[
 	@within Immut
@@ -49,7 +52,7 @@ type Recipe<T> = (draft: T) -> (T? | typeof(None))
 	value will be used instead of the draft.
 
 	:::tip
-	When in strict typechecking mode, recipes do need an explicit return. You 
+	When in strict typechecking mode, recipes do need an explicit return. You
 	can simply return the draft or nil to avoid type errors.
 	:::
 

@@ -1,7 +1,8 @@
-local isDraft = require(script.Parent.isDraft)
-local constants = require(script.Parent.constants)
+--!strict
+--!native
+--!optimize 2
 
-local BASE = constants.BASE
+local isDraft = require(script.Parent.isDraft)
 
 --[=[
 	@within Immut
@@ -20,10 +21,12 @@ local BASE = constants.BASE
 			draft.isOtherValue = true
 		end
 	end)
+    ```
 ]=]
-local function original<T>(draft: T)
+local function original<T>(draft: T): T
 	assert(isDraft(draft), "Immut.original can only be called on drafts")
-	return rawget(draft :: any, BASE) :: T
+
+	return rawget(draft :: any, "_base") :: T
 end
 
 return original
