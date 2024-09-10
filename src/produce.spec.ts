@@ -1,6 +1,20 @@
 import { expect, it } from "@rbxts/jest-globals";
 import { None, produce } from "index";
 
+it("should support returning nil when None is returned", () => {
+	expect(
+		produce("value", (draft) => {
+			return None;
+		}),
+	).toBeUndefined();
+});
+
+it("should return the original primitive value", () => {
+	expect(produce("value", () => {})).toBe("value");
+
+	expect(produce(3, () => {})).toBe(3);
+});
+
 it("should not mutate the original table", () => {
 	const original: Record<string, number> = { number: 2 };
 
@@ -111,4 +125,23 @@ it("should be able to return non-table non-draftable values", () => {
 
 		expect(newValue).toBe(true);
 	}
+});
+
+it("should mutate maps", () => {
+	const originalValue = new Map<string, number>();
+
+	originalValue.set("first", 1);
+	originalValue.set("second", 2);
+	originalValue.set("third", 3);
+
+	expect(produce(originalValue, (draft) => {})).toBe(originalValue);
+
+	expect(
+		produce(originalValue, (draft) => {
+			draft.delete("third");
+		}),
+	).toStrictEqual({
+		first: 1,
+		second: 2,
+	});
 });

@@ -4,7 +4,7 @@
 	"description": "Immutable data library",
 	"main": "out/init.lua",
 	"types": "out/index.d.ts",
-	"files": ["out", "!out/examples", "!out/jest.config.*"],
+	"files": ["out", "!out/examples", "!out/jest.config.*", "!out/*.spec.d.ts"],
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
 		"prepublishOnly": "bun run check && bun run build",
@@ -34,6 +34,7 @@
 	},
 	"dependencies": {
 		"@rbxts/compiler-types": "2.3.0-types.2",
+		"@rbxts/try": "^0.0.1",
 		"@rbxts/types": "^1.0.804"
 	},
 	"devDependencies": {
