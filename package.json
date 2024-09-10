@@ -1,10 +1,10 @@
 {
 	"name": "@rbxts/better-immut",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Immutable data library",
 	"main": "out/init.lua",
 	"types": "out/index.d.ts",
-	"files": ["out", "!out/examples", "!out/jest.config.*", "!out/*.spec.d.ts"],
+	"files": ["out", "!out/examples", "!out/jest.config.*", "!out/*.spec.*"],
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
 		"prepublishOnly": "bun run check && bun run build",
@@ -34,12 +34,12 @@
 	},
 	"dependencies": {
 		"@rbxts/compiler-types": "2.3.0-types.2",
-		"@rbxts/types": "^1.0.804"
+		"@rbxts/types": "1.0.805"
 	},
 	"devDependencies": {
 		"@rbxts/jest": "^0.1.0",
 		"@rbxts/jest-globals": "^0.1.0",
-		"roblox-ts": "^2.3.0-dev-5532593",
+		"roblox-ts": "^2.3.0-dev-393512b",
 		"typescript": "^5.7.0-dev.20240903"
 	}
 }
