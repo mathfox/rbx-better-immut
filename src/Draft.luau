@@ -1,9 +1,8 @@
 --!strict
-local constants = require(script.Parent.constants)
-local getClone = require(script.Parent.getClone)
+--!native
+--!optimize 2
 
-local BASE = constants.BASE
-local CLONE = constants.CLONE
+local getClone = require(script.Parent.getClone)
 
 --[=[
 	@within Immut
@@ -32,11 +31,11 @@ local Draft = {}
 function Draft.new<T>(base: T)
 	assert(typeof(base) == "table", `Drafts can only be based off of tables. Got {typeof(base)}`)
 	assert(getmetatable(base :: any) == nil, "Cannot create a draft from a table with an existing metatable.")
-	return setmetatable({ [BASE] = base }, Draft) :: any
+	return setmetatable({ _base = base }, Draft) :: any
 end
 
 function Draft:__index(key: any)
-	local target = rawget(self, CLONE) or rawget(self, BASE)
+	local target = rawget(self, "_clone") or rawget(self, "_base")
 
 	local value = target[key] :: any
 
@@ -55,11 +54,11 @@ function Draft:__newindex(key: any, value: any)
 end
 
 function Draft:__len()
-	return #(rawget(self, CLONE) or rawget(self, BASE))
+	return #(rawget(self, "_clone") or rawget(self, "_base"))
 end
 
 function _next(self, last)
-	local target = rawget(self, CLONE) or rawget(self, BASE)
+	local target = rawget(self, "_clone") or rawget(self, "_base")
 
 	local key: any? = next(target, last)
 

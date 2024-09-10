@@ -1,3 +1,7 @@
+--!strict
+--!native
+--!optimize 2
+
 local Draft = require(script.Parent.Draft)
 
 --[=[

@@ -8,9 +8,9 @@
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
 		"prepublishOnly": "bun run check && bun run build",
-		"build": "rbxtsc --type package",
+		"build": "rbxtsc --type package --includePath .",
 		"build:tests": "rbxtsc --rojo tests.project.json --type game",
-		"sourcemap:tests": "rojo sourcemap tests.project.json --output sourcemap.json",
+		"sourcemap:tests": "bun run build:tests && rojo sourcemap tests.project.json --output sourcemap.json",
 		"patch-include": "bun --cwd ./tests/ patch-include.ts",
 		"serve:tests": "rojo serve tests.project.json",
 		"test": "bun run build:tests && bun run patch-include && rojo build tests.project.json --output tests/tests-place.rbxl && run-in-roblox --script tests/run-tests.luau --place tests/tests-place.rbxl"

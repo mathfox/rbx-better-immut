@@ -18,7 +18,7 @@ end)
 local status, result = runCLI(ReplicatedStorage, {
 	verbose = false,
 	ci = false,
-}, { ReplicatedStorage["pretty-matter-hooks"]["jest.config"] }):awaitStatus()
+}, { ReplicatedStorage["better-immut"]["jest.config"] }):awaitStatus()
 
 task.wait(1)
 

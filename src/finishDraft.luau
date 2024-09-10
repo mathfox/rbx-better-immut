@@ -1,9 +1,8 @@
 --!strict
-local isDraft = require(script.Parent.isDraft)
-local constants = require(script.Parent.constants)
+--!native
+--!optimize 2
 
-local BASE = constants.BASE
-local CLONE = constants.CLONE
+local isDraft = require(script.Parent.isDraft)
 
 --[=[
 	@within Immut
@@ -40,7 +39,7 @@ local CLONE = constants.CLONE
 	@return T?
 
 	:::tip
-	This function is used internally. If you need the same functionality 
+	This function is used internally. If you need the same functionality
 	`finishDraft` provides, consider using [`current`](/api/Immut#current).
 	:::
 

@@ -1,14 +1,13 @@
-local constants = require(script.Parent.constants)
-
-local CLONE = constants.CLONE
-local BASE = constants.BASE
+--!strict
+--!native
+--!optimize 2
 
 local function getClone(draft)
-	local clone = rawget(draft, CLONE)
+	local clone = rawget(draft, "_clone")
 
 	if clone == nil then
-		clone = table.clone(rawget(draft, BASE))
-		rawset(draft, CLONE, clone)
+		clone = table.clone(rawget(draft, "_base"))
+		rawset(draft, "_clone", clone)
 	end
 
 	return clone
