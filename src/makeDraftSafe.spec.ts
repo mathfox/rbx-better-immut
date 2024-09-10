@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import makeDraftSafe from "makeDraftSafe";
+import Draft from "./Draft";
+import makeDraftSafe from "./makeDraftSafe";
 
 it("should return a draft-safe version of the given function", () => {
 	function unsafe(t: object, k: string, v: unknown): void {

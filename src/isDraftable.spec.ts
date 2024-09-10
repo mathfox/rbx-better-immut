@@ -1,5 +1,5 @@
 import { expect, it } from "@rbxts/jest-globals";
-import { isDraftable } from "index";
+import isDraftable from "./isDraftable";
 
 it("should return false when given a value that is not a table", () => {
 	expect(isDraftable(1)).toBe(false);

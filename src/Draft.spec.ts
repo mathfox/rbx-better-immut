@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import isDraft from "isDraft";
+import Draft from "./Draft";
+import isDraft from "./isDraft";
 
 describe("newindex", () => {
 	it("should not mutate the original table", () => {

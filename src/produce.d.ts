@@ -1,5 +1,5 @@
-import type Draft from "Draft";
-import type finishDraft from "finishDraft";
+import type Draft from "./Draft";
+import type finishDraft from "./finishDraft";
 
 declare function produce<TBase, TOutput>(
 	base: TBase,

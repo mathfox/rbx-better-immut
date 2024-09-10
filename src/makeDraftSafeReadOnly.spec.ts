@@ -1,7 +1,7 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import makeDraftSafeReadOnly from "makeDraftSafeReadOnly";
-import { find } from "table";
+import Draft from "./Draft";
+import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
+import { find } from "./table";
 
 it("should return a draft-safe version of the given function", () => {
 	function unsafe(t: object, k: string) {

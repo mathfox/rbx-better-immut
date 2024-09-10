@@ -2,15 +2,15 @@ import makeDraftSafe from "./makeDraftSafe";
 
 import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
 
-import type Draft from "Draft";
+import type Draft from "./Draft";
 import table from "./table";
 
-import None from "None";
-import finishDraft from "finishDraft";
-import isDraft from "isDraft";
-import isDraftable from "isDraftable";
-import original from "original";
-import produce from "produce";
+import None from "./None";
+import finishDraft from "./finishDraft";
+import isDraft from "./isDraft";
+import isDraftable from "./isDraftable";
+import original from "./original";
+import produce from "./produce";
 
 export function createDraft<TBase extends object>(base: TBase): Draft<TBase>;
 

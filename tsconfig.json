@@ -7,6 +7,7 @@
         "noLib": true,
         "forceConsistentCasingInFileNames": true,
         "moduleDetection": "force",
+        "esModuleInterop": true,
         "strict": true,
         "target": "ESNext",
         "typeRoots": [
@@ -14,7 +15,6 @@
         ],
         "rootDir": "src",
         "outDir": "out",
-        "baseUrl": "./src",
         "declaration": true
     },
     "include": [

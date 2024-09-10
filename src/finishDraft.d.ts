@@ -1,5 +1,5 @@
-import type Draft from "Draft";
-import type None from "None";
+import type Draft from "./Draft";
+import type None from "./None";
 
 declare function finishDraft<TValue>(
 	value: TValue,

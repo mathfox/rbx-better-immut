@@ -1,4 +1,4 @@
-import type { DraftState } from "types";
+import type { DraftState } from "./types";
 
 type Draft<TBase = unknown> = DraftState<TBase> & {
 	_base: TBase;

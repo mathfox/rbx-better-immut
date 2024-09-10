@@ -1,6 +1,7 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import { None, finishDraft, original } from "index";
+import Draft from "./Draft";
+import None from "./None";
+import finishDraft from "./finishDraft";
 
 it("should return the given value when it is not a draft", () => {
 	const base = {};

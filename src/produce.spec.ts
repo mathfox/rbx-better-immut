@@ -1,5 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
-import { None, produce } from "index";
+import None from "./None";
+import produce from "./produce";
 
 it("should support returning nil when None is returned", () => {
 	expect(

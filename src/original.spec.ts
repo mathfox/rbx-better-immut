@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import isDraft from "isDraft";
+import Draft from "./Draft";
+import isDraft from "./isDraft";
 
 it("should return false when given a value that isn't a draft", () => {
 	expect(isDraft(true)).toBe(false);

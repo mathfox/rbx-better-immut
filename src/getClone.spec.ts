@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "Draft";
-import getClone from "getClone";
+import Draft from "./Draft";
+import getClone from "./getClone";
 
 it("should return a draft's cloned table if it exists", () => {
 	const draft = new Draft(identity<Record<string, boolean>>({}));

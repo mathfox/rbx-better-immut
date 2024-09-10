@@ -1,4 +1,4 @@
-import type { DraftState } from "types";
+import type { DraftState } from "../types";
 
 const obj = {} as {
 	readonly count: number;
