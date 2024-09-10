@@ -1,10 +1,22 @@
-export function remove<T>(arr: Array<T>, number?: number): T | undefined;
-export function insert<T>(arr: Array<T>, value: T): void;
-export function insert<T>(arr: Array<T>, pos: number, value: T): void;
-export function find<T>(arr: Array<T>, value: T, init?: number): number | undefined;
-export function concat<T extends string | number>(arr: Array<T>, sep?: string, i?: number, j?: number): string;
+export function remove<TValue>(array: ReadonlyArray<TValue>, number?: number): TValue | undefined;
+
+export function insert<TValue>(array: ReadonlyArray<TValue>, value: TValue): void;
+
+export function insert<TValue>(array: ReadonlyArray<TValue>, pos: number, value: TValue): void;
+
+export function find<TValue>(array: ReadonlyArray<TValue>, value: TValue, init?: number): number | undefined;
+
+export function concat<TValue extends string | number>(
+	arr: ReadonlyArray<TValue>,
+	sep?: string,
+	i?: number,
+	j?: number,
+): string;
+
 export declare const sort: typeof table.sort;
+
 export declare const clear: typeof table.clear;
 
 export { makeDraftSafe } from "./makeDraftSafe";
+
 export { makeDraftSafeReadOnly } from "./makeDraftSafeReadOnly";

@@ -1,9 +1,8 @@
 --!strict
-local constants = require(script.Parent.constants)
-local isDraft = require(script.Parent.isDraft)
+--!native
+--!optimize 2
 
-local BASE = constants.BASE
-local CLONE = constants.CLONE
+local isDraft = require(script.Parent.isDraft)
 
 type Draft<K = any, V = any> = { [K]: V }
 type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
@@ -15,7 +14,7 @@ type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
 	@return T
 
 	A wrapper for functions that bypass metatables (like using rawget) that will
-	make them draft-safe. `makeDraftSafeReadonly` should only be used on functions that will 
+	make them draft-safe. `makeDraftSafeReadonly` should only be used on functions that will
 	not mutate the table.
 
 	This is used internally to wrap functions within Luau's table library that only perform read operations, and
@@ -36,7 +35,7 @@ local function makeDraftSafeReadOnly<Args..., Return...>(fn: Mutator<Args..., Re
 		local t = draft
 
 		if isDraft(t) then
-			t = rawget(t, CLONE) or rawget(t, BASE)
+			t = rawget(t, "_clone") or rawget(t, "_base")
 		end
 
 		return fn(t, ...)

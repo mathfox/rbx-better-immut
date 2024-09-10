@@ -1,5 +1,5 @@
 import type Draft from "Draft";
 
-declare function getClone(draft: Draft<unknown>): void;
+declare function getClone<TBase>(draft: Draft<TBase>): TBase;
 
 export = getClone;

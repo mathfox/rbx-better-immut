@@ -1,4 +1,7 @@
 --!strict
+--!native
+--!optimize 2
+
 local isDraft = require(script.Parent.isDraft)
 local getClone = require(script.Parent.getClone)
 
@@ -12,9 +15,9 @@ type Mutator<K, V, Args..., Return...> = (draft: Draft<K, V>, Args...) -> Return
 	@return T
 
 	A wrapper for functions that bypass metatables (like using rawset) that will
-	make them draft-safe. `makeDraftSafe` is only necessary if the function will 
+	make them draft-safe. `makeDraftSafe` is only necessary if the function will
 	mutate the table. If the unsafe function is only reading from the table
-	(using rawget), consider using [`original`](/api/Immut#original) or 
+	(using rawget), consider using [`original`](/api/Immut#original) or
 	[`current`](/api/Immut#current) instead. Otherwise, you can use [`makeDraftSafeReadOnly`](/api/Immut#makeDraftSafeReadonly).
 
 	This is used internally to wrap functions within Luau's table library, and
