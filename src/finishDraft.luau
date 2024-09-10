@@ -3,6 +3,7 @@
 --!optimize 2
 
 local isDraft = require(script.Parent.isDraft)
+local None = require(script.Parent.None)
 
 --[=[
 	@within Immut
@@ -47,7 +48,11 @@ local isDraft = require(script.Parent.isDraft)
 	Finalize a draft. When given [`None`](/api/Immut#None), returns `nil`. When
 	given a non-draft value, returns that value.
 ]=]
-local function finishDraft<T>(draft: T): T?
+local function finishDraft<TValue>(draft: TValue): TValue?
+	if draft == None then
+		return nil
+	end
+
 	if not isDraft(draft) then
 		return draft
 	end

@@ -4,7 +4,7 @@ import isDraft from "isDraft";
 
 describe("newindex", () => {
 	it("should not mutate the original table", () => {
-		const base = {
+		const base: Record<string, string> = {
 			a: "foo",
 		};
 
@@ -13,11 +13,11 @@ describe("newindex", () => {
 		draft.b = "baz";
 
 		expect(base.a).toBe("foo");
-		expect((base as unknown as Record<string, string>).b).toBeUndefined();
+		expect(base.b).toBeUndefined();
 	});
 
 	it("should mutate the cloned table", () => {
-		const base = { a: "foo" };
+		const base: Record<string, string> = { a: "foo" };
 
 		const draft = new Draft(base);
 		draft.a = "bar";
@@ -32,7 +32,7 @@ describe("newindex", () => {
 	});
 
 	it("should clone the table when it has first been modified", () => {
-		const draft = new Draft({ a: "foo" });
+		const draft = new Draft(identity<Record<string, string>>({ a: "foo" }));
 		expect(rawget(draft, "_clone")).toBeUndefined();
 
 		draft.b = "bar";
@@ -45,7 +45,7 @@ describe("newindex", () => {
 	});
 
 	it("should respect setting nil values", () => {
-		const original = { a: true };
+		const original: Record<string, boolean | undefined> = { a: true };
 
 		const draft = new Draft(original);
 		draft.a = undefined;
@@ -57,7 +57,7 @@ describe("newindex", () => {
 
 describe("index", () => {
 	it("should return new values from the cloned table", () => {
-		const draft = new Draft({ a: "foo" });
+		const draft = new Draft(identity<Record<string, string>>({ a: "foo" }));
 		draft.a = "bar";
 		draft.b = "baz";
 
@@ -68,7 +68,7 @@ describe("index", () => {
 	});
 
 	it("should return unmodified values from the original table", () => {
-		const base = { a: "foo" };
+		const base: Record<string, string> = { a: "foo" };
 
 		const draft = new Draft(base);
 		draft.b = "baz";

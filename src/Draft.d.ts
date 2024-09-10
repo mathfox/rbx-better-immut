@@ -1,9 +1,8 @@
-// biome-ignore lint/suspicious/noExplicitAny: We do not really care about the shape of the
-type AnyObject = Record<any, any>;
+import type { DraftState } from "types";
 
-interface Draft<TBase = unknown> extends AnyObject {
+type Draft<TBase = unknown> = DraftState<TBase> & {
 	_base: TBase;
-}
+};
 
 declare const Draft: new <TBase>(base: TBase) => Draft<TBase>;
 

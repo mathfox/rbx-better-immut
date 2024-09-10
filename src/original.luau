@@ -23,10 +23,10 @@ local isDraft = require(script.Parent.isDraft)
 	end)
     ```
 ]=]
-local function original<T>(draft: T): T
+local function original<TBase>(draft: TBase): TBase
 	assert(isDraft(draft), "Immut.original can only be called on drafts")
 
-	return rawget(draft :: any, "_base") :: T
+	return rawget(draft :: any, "_base") :: TBase
 end
 
 return original

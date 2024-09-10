@@ -10,10 +10,10 @@ it("should return a draft-safe version of the given function", () => {
 
 	const safe = makeDraftSafeReadOnly(unsafe);
 
-	const original = { foo: {} };
+	const original: Record<string, object> = { foo: {} };
 	const draft = new Draft(original);
 
-	const bar = {};
+	const bar: Record<string, unknown> = {};
 	draft.bar = bar;
 
 	expect(safe(draft, "foo")).toBe(original.foo);

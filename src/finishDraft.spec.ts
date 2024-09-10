@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
 import Draft from "Draft";
-import { finishDraft, original } from "index";
+import { finishDraft, None, original } from "index";
 
 it("should return the given value when it is not a draft", () => {
 	const base = {};
@@ -23,7 +23,7 @@ it("should return the original table when the given draft was not modified", () 
 });
 
 it("should return a new table when the given draft was modified", () => {
-	const original = { foo: true };
+	const original: Record<string, boolean> = { foo: true };
 
 	const draft = new Draft(original);
 	draft.bar = true;
@@ -40,4 +40,8 @@ it("should not mutate non-draft tables", () => {
 	expect(() => {
 		finishDraft(original);
 	}).never.toThrow();
+});
+
+it("should return nil if None is provided", () => {
+	expect(finishDraft(None)).toBeUndefined();
 });

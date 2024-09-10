@@ -7,7 +7,7 @@ it("should return a draft-safe version of the given function", () => {
 		rawset(t, k, v);
 	}
 
-	const draft = new Draft({});
+	const draft = new Draft(identity<Record<string, string>>({}));
 
 	const safe = makeDraftSafe(unsafe);
 	safe(draft, "foo", "bar");

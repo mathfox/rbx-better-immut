@@ -67,10 +67,6 @@ local function produce<T>(base: T, recipe: Recipe<T>): T?
 
 	local nextValue = recipe(proxy :: T) or proxy
 
-	if nextValue == None then
-		return nil
-	end
-
 	return finishDraft(nextValue)
 end
 

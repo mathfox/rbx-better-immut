@@ -1,3 +1,7 @@
+import makeDraftSafe from "./makeDraftSafe";
+
+import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
+
 export function remove<TValue>(array: ReadonlyArray<TValue>, number?: number): TValue | undefined;
 
 export function insert<TValue>(array: ReadonlyArray<TValue>, value: TValue): void;
@@ -17,6 +21,4 @@ export declare const sort: typeof table.sort;
 
 export declare const clear: typeof table.clear;
 
-export { makeDraftSafe } from "./makeDraftSafe";
-
-export { makeDraftSafeReadOnly } from "./makeDraftSafeReadOnly";
+export { makeDraftSafe, makeDraftSafeReadOnly };

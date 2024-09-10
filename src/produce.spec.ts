@@ -2,11 +2,11 @@ import { expect, it } from "@rbxts/jest-globals";
 import { None, produce } from "index";
 
 it("should not mutate the original table", () => {
-	const original = { number: 2 };
+	const original: Record<string, number> = { number: 2 };
 
-	const newValue = produce(original, (draft) => {
+	const newValue = produce(original, (draft: Record<string, number | boolean>) => {
 		draft.foo = true;
-		draft.number += 2;
+		(draft as Record<string, number>).number += 2;
 	});
 
 	expect((newValue as Record<string, boolean | number>).foo).toBe(true);
@@ -17,25 +17,37 @@ it("should not mutate the original table", () => {
 });
 
 it("should not mutate nested tables", () => {
-	const original = {
+	type Nested = {
+		modified: undefined | true;
+		nested?: Nested;
+	};
+
+	const original: Nested = {
 		modified: undefined,
 		nested: {
 			modified: undefined,
-			nestedDeep: {
+			nested: {
 				modified: undefined,
 			},
 		},
 	};
 
 	const newValue = produce(original, (draft) => {
+		assert(draft.nested);
 		draft.nested.modified = true;
-		draft.nested.nestedDeep.modified = true;
+		assert(draft.nested.nested);
+		draft.nested.nested.modified = true;
 	});
 
+	assert(newValue.nested);
 	expect(newValue.nested.modified).toBe(true);
-	expect(newValue.nested.nestedDeep.modified).toBe(true);
+	assert(newValue.nested.nested);
+	expect(newValue.nested.nested.modified).toBe(true);
+
+	assert(original.nested);
 	expect(original.nested.modified).toBeUndefined();
-	expect(original.nested.nestedDeep.modified).toBeUndefined();
+	assert(original.nested.nested);
+	expect(original.nested.nested.modified).toBeUndefined();
 });
 
 it("should return the return value of the recipe when not nil or None", () => {

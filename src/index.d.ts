@@ -1,23 +1,19 @@
-import _None from "./None";
-import * as _table from "./table";
+import makeDraftSafe from "./makeDraftSafe";
 
-import { Draft } from "./types";
+import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
 
-declare namespace Immut {
-	export const None: typeof _None;
-	export const nothing: typeof None;
-	export const table: typeof _table;
+import type Draft from "Draft";
+import table from "./table";
 
-	export function createDraft<T extends Objectish>(base: T): Draft<T>;
-	export const current: typeof finishDraft;
-	export function finishDraft<T>(draft: Draft<T>): T;
-	export function isDraft(value: unknown): boolean;
-	export function isDraftable(value: unknown): boolean;
-	export function original<T>(draft: Draft<T>): T;
-	export function produce<T>(
-		base: T,
-		recipe: (draft: Draft<T>) => typeof draft | void | undefined | (T extends undefined ? typeof None : never),
-	): T;
-}
+import None from "None";
+import finishDraft from "finishDraft";
+import isDraft from "isDraft";
+import isDraftable from "isDraftable";
+import original from "original";
+import produce from "produce";
 
-export = Immut;
+export function createDraft<TBase extends object>(base: TBase): Draft<TBase>;
+
+export { finishDraft, finishDraft as current, isDraft, isDraftable, original, produce, table, None, None as nothing };
+
+export { makeDraftSafe, makeDraftSafeReadOnly };

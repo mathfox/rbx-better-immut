@@ -7,6 +7,7 @@
         "noLib": true,
         "forceConsistentCasingInFileNames": true,
         "moduleDetection": "force",
+        "esModuleInterop": true,
         "strict": true,
         "target": "ESNext",
         "typeRoots": [
