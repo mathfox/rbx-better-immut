@@ -1,5 +1,5 @@
-export type DraftValue<TInput> = TInput extends ReadonlyMap<infer TKey, infer TValue>
-	? Map<DraftValue<TKey>, DraftValue<TValue>>
+export type DraftState<TInput> = TInput extends ReadonlyMap<infer TKey, infer TValue>
+	? Map<DraftState<TKey>, DraftState<TValue>>
 	: TInput extends ReadonlySet<infer TValue>
-		? Set<DraftValue<TValue>>
-		: TInput;
+		? Set<DraftState<TValue>>
+		: Writable<TInput>;

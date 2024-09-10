@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
 import Draft from "Draft";
-import { makeDraftSafe } from "makeDraftSafe";
+import makeDraftSafe from "makeDraftSafe";
 
 it("should return a draft-safe version of the given function", () => {
 	function unsafe(t: object, k: string, v: unknown): void {
@@ -17,7 +17,7 @@ it("should return a draft-safe version of the given function", () => {
 });
 
 it("should allow non-drafts in the returned draft-safe function", () => {
-	const nonDraft = {};
+	const nonDraft = new Array<defined>();
 
 	function insert(array: Array<defined>, value: defined): void {
 		array.push(value);
@@ -27,7 +27,7 @@ it("should allow non-drafts in the returned draft-safe function", () => {
 
 	expect(() => {
 		safe(nonDraft, "foo");
-	}).to.never.throw();
+	}).never.toThrow();
 
-	expect(nonDraft[1]).to.equal("foo");
+	expect(nonDraft[0]).toBe("foo");
 });

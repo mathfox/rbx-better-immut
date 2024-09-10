@@ -20,7 +20,7 @@ type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
 	This is used internally to wrap functions within Luau's table library that only perform read operations, and
 	is exposed for your convenience.
 
-	```lua
+	```luau
 	local find = makeDraftSafeReadOnly(table.find)
 	local concat = makeDraftSafeReadOnly(table.concat)
 
@@ -28,7 +28,7 @@ type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
 		local value = find(draft.a, 1)
 		print(concat(draft.b, ",")
 	end)
-	```
+    ```
 ]=]
 local function makeDraftSafeReadOnly<Args..., Return...>(fn: Mutator<Args..., Return...>): Mutator<Args..., Return...>
 	return function(draft, ...)
