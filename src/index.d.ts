@@ -1,7 +1,7 @@
 import _None from "./None";
 import * as _table from "./table";
 
-import { Draft } from "./types-external";
+import { Draft } from "./types";
 import { Objectish } from "./types-internal";
 
 declare namespace Immut {
