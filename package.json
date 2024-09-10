@@ -1,0 +1,51 @@
+{
+	"name": "@rbxts/pretty-matter-hooks",
+	"version": "0.8.0",
+	"description": "A set of hooks to be used in pair with Matter ECS.",
+	"main": "out/init.lua",
+	"types": "out/index.d.ts",
+	"files": ["out", "!out/examples", "!out/jest.config.*"],
+	"scripts": {
+		"check": "bunx @biomejs/biome check --write",
+		"prepublishOnly": "bun run check && bun run build",
+		"build": "rbxtsc --type package",
+		"build:tests": "rbxtsc --rojo tests.project.json --type game",
+		"sourcemap:tests": "rojo sourcemap tests.project.json --output sourcemap.json",
+		"patch-include": "bun --cwd ./tests/ patch-include.ts",
+		"serve:tests": "rojo serve tests.project.json",
+		"test": "bun run build:tests && bun run patch-include && rojo build tests.project.json --output tests/tests-place.rbxl && run-in-roblox --script tests/run-tests.luau --place tests/tests-place.rbxl"
+	},
+	"keywords": ["roblox", "roblox-ts", "matter", "matter-hooks", "hooks"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mathfox/pretty-matter-hooks.git"
+	},
+	"author": {
+		"name": "Ivan Leontev",
+		"url": "https://github.com/mathfox"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/mathfox/pretty-matter-hooks/issues"
+	},
+	"homepage": "https://github.com/mathfox/pretty-matter-hooks#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@rbxts/amulet": "0.2.1",
+		"@rbxts/atomic-binding": "0.8.0",
+		"@rbxts/compiler-types": "2.3.0-types.2",
+		"@rbxts/light-promise": "0.3.1",
+		"@rbxts/matter": "0.8.5",
+		"@rbxts/phantom": "0.1.0",
+		"@rbxts/services": "1.5.5",
+		"@rbxts/types": "^1.0.804"
+	},
+	"devDependencies": {
+		"@rbxts/jest": "^0.1.0",
+		"@rbxts/jest-globals": "^0.1.0",
+		"roblox-ts": "^2.3.0-dev-5532593",
+		"typescript": "^5.7.0-dev.20240903"
+	}
+}
