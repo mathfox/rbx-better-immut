@@ -1,3 +1,3 @@
-# pretty-matter-hooks
+# better-immut
 
-Intended to be used with [Matter](https://github.com/matter-ecs/matter).
+Reference - https://www.npmjs.com/package/@rbxts/immut

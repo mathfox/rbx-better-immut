@@ -1,5 +1,5 @@
 {
-	"name": "pretty-matter-hooks-tests",
+	"name": "better-immut-tests",
 	"emitLegacyScripts": false,
 	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
@@ -15,7 +15,7 @@
 					}
 				}
 			},
-			"pretty-matter-hooks": {
+			"better-immut": {
 				"$path": "out"
 			}
 		}
