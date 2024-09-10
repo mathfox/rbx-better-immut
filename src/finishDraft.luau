@@ -31,6 +31,7 @@ local isDraft = require(script.Parent.isDraft)
 
 		print(current(draft)) -- prints { foo = "baz" }
 	end)
+    ```
 ]=]
 
 --[=[
@@ -47,14 +48,14 @@ local isDraft = require(script.Parent.isDraft)
 	given a non-draft value, returns that value.
 ]=]
 local function finishDraft<T>(draft: T): T?
-	if typeof(draft) ~= "table" or not isDraft(draft) then
+	if not isDraft(draft) then
 		return draft
 	end
 
-	local final = rawget(draft, CLONE)
+	local final = rawget(draft :: any, "_clone")
 
 	if final == nil then
-		return rawget(draft, BASE)
+		return rawget(draft :: any, "_base")
 	end
 
 	for key, value in final do

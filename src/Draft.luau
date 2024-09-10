@@ -31,6 +31,7 @@ local Draft = {}
 function Draft.new<T>(base: T)
 	assert(typeof(base) == "table", `Drafts can only be based off of tables. Got {typeof(base)}`)
 	assert(getmetatable(base :: any) == nil, "Cannot create a draft from a table with an existing metatable.")
+
 	return setmetatable({ _base = base }, Draft) :: any
 end
 
