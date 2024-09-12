@@ -1,6 +1,6 @@
 import { expect, it } from "@rbxts/jest-globals";
-import produce from "./produce";
 import original from "./original";
+import produce from "./produce";
 
 it("should return reference to original table", () => {
 	const originalValue = {};
