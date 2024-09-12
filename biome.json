@@ -6,6 +6,9 @@
 	"formatter": {
 		"lineWidth": 120
 	},
+	"linter": {
+		"enabled": false
+	},
 	"files": {
 		"include": ["src", "./package.json"]
 	}
