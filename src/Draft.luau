@@ -29,7 +29,7 @@ local Draft = {}
 	Create a new draft from the given table.
 ]=]
 function Draft.new<T>(base: T)
-	assert(typeof(base) == "table", `Drafts can only be based off of tables. Got {typeof(base)}`)
+	assert(type(base) == "table", `Drafts can only be based off of tables. Got {typeof(base)}`)
 	assert(getmetatable(base :: any) == nil, "Cannot create a draft from a table with an existing metatable.")
 
 	return setmetatable({ _base = base }, Draft) :: any
@@ -40,7 +40,7 @@ function Draft:__index(key: any)
 
 	local value = target[key] :: any
 
-	if typeof(value) == "table" and getmetatable(value) ~= Draft then
+	if type(value) == "table" and getmetatable(value) ~= Draft then
 		local nested = Draft.new(value)
 		self[key] = nested
 		return nested

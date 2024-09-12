@@ -66,13 +66,13 @@ it("should not mutate nested tables", () => {
 });
 
 it("should return the return value of the recipe when not nil or None", () => {
-	const override = { foo: true };
+	const override: Record<string, boolean> = { foo: true };
 
 	const newValue = produce({}, () => {
 		return override;
 	});
 
-	expect((newValue as Record<string, boolean>).foo).toBe(true);
+	expect(newValue.foo).toBe(true);
 	expect(newValue).toBe(override);
 });
 

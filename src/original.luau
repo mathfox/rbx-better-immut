@@ -11,6 +11,8 @@ local isDraft = require(script.Parent.isDraft)
 	table, like in cases where it may be more performant to use another method,
 	or when you want to do comparisons.
 
+    If non-draft value provided, it
+
 	## Example
 
 	```lua

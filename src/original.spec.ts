@@ -1,13 +1,23 @@
 import { expect, it } from "@rbxts/jest-globals";
-import Draft from "./Draft";
-import isDraft from "./isDraft";
+import produce from "./produce";
+import original from "./original";
 
-it("should return false when given a value that isn't a draft", () => {
-	expect(isDraft(true)).toBe(false);
-	expect(isDraft({})).toBe(false);
-	expect(isDraft(setmetatable({}, {}))).toBe(false);
+it("should return reference to original table", () => {
+	const originalValue = {};
+
+	produce(originalValue, (draft) => {
+		expect(original(draft)).toBe(originalValue);
+	});
 });
 
-it("should return true when given a draft", () => {
-	expect(isDraft(new Draft({}))).toBe(true);
+it("should return reference to original tables for nested structures", () => {
+	const originalValue = {
+		nestedValue: {
+			secondNestedValue: {},
+		},
+	};
+
+	produce(originalValue, (draft) => {
+		expect(original(draft.nestedValue.secondNestedValue)).toBe(originalValue.nestedValue.secondNestedValue);
+	});
 });
