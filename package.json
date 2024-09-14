@@ -2,19 +2,13 @@
 	"name": "@rbxts/better-immut",
 	"version": "0.1.3",
 	"description": "Immutable data library",
-	"main": "out/init.lua",
-	"types": "out/index.d.ts",
-	"files": ["out", "!out/examples", "!out/jest.config.*", "!out/*.spec.*"],
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
-		"prepublishOnly": "bun run check && bun run build",
-		"build": "rbxtsc --type package",
-		"build:tests": "rbxtsc --rojo tests.project.json --type game",
-		"sourcemap:tests": "bun run build:tests && rojo sourcemap tests.project.json --output sourcemap.json",
-		"patch-include": "bun --cwd ./tests/ patch-include.ts",
-		"serve:tests": "rojo serve tests.project.json",
-		"test": "bun run build:tests && bun run patch-include && rojo build tests.project.json --output tests/tests-place.rbxl && run-in-roblox --script tests/run-tests.luau --place tests/tests-place.rbxl"
+		"prepublishOnly": "bun run check"
 	},
+	"main": "src/init.luau",
+	"types": "src/index.d.ts",
+	"files": ["src", "!src/examples", "!src/jest.config.ts", "!src/**/*.test.ts"],
 	"keywords": ["roblox", "roblox-ts", "immut", "immutability", "data"],
 	"repository": {
 		"type": "git",
@@ -32,14 +26,12 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"dependencies": {
-		"@rbxts/compiler-types": "2.3.0-types.2",
-		"@rbxts/types": "1.0.805"
-	},
 	"devDependencies": {
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/types": "1.0.805",
 		"@rbxts/jest": "^0.1.0",
 		"@rbxts/jest-globals": "^0.1.0",
-		"roblox-ts": "^2.3.0-dev-393512b",
+		"roblox-ts": "^3.0.0-dev-834585a",
 		"typescript": "^5.7.0-dev.20240903"
 	}
 }
