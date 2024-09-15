@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/better-immut",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"description": "Immutable data library",
 	"scripts": {
 		"check": "bunx @biomejs/biome check --write",
