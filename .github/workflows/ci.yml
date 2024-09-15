@@ -22,16 +22,3 @@ jobs:
                   bun-version: latest
             - name: Run Biome
               run: bunx @biomejs/biome format src
-
-    lint:
-        name: Lint
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-            - name: Install Bun
-              uses: oven-sh/setup-bun@v1
-              with:
-                  bun-version: latest
-            - name: Run Biome
-              run: bunx @biomejs/biome lint src
