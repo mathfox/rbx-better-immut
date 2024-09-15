@@ -14,7 +14,7 @@ local isDraftable = require(script.Parent.isDraftable)
 
 -- when using this type, recipes will always need to explicitly return something.
 -- `draft` autocompletion works though, so i think this is better, but not ideal.
-type Recipe<T> = (draft: T) -> T? | typeof(None)
+type Recipe<TBase> = (draft: TBase) -> TBase? | typeof(None)
 
 --[=[
 	@within Immut
@@ -62,10 +62,10 @@ type Recipe<T> = (draft: T) -> T? | typeof(None)
 	end)
 	```
 ]=]
-local function produce<T>(base: T, recipe: Recipe<T>): T?
+local function produce<TBase>(base: TBase, recipe: Recipe<TBase>): TBase?
 	local proxy = isDraftable(base) and Draft.new(base) or base
 
-	local nextValue = recipe(proxy :: T) or proxy
+	local nextValue = recipe(proxy :: TBase) or proxy
 
 	return finishDraft(nextValue)
 end

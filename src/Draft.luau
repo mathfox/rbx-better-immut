@@ -28,7 +28,7 @@ local Draft = {}
 
 	Create a new draft from the given table.
 ]=]
-function Draft.new<T>(base: T)
+function Draft.new<TBase>(base: TBase)
 	assert(type(base) == "table", `Drafts can only be based off of tables. Got {typeof(base)}`)
 	assert(getmetatable(base :: any) == nil, "Cannot create a draft from a table with an existing metatable.")
 

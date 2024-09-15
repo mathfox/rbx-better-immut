@@ -45,11 +45,11 @@ local None = require(script.Parent.None)
 	`finishDraft` provides, consider using [`current`](/api/Immut#current).
 	:::
 
-	Finalize a draft. When given [`None`](/api/Immut#None), returns `nil`. When
-	given a non-draft value, returns that value.
+	Finalize a draft. When given [`None`](/api/Immut#None), returns `nil`.
+    When given a non-draft value, returns that value.
 ]=]
-local function finishDraft<TValue>(draft: TValue): TValue?
-	if draft == None then
+local function finishDraft<TBase>(draft: TBase): TBase | nil
+	if (draft :: any) == None then
 		return nil
 	end
 

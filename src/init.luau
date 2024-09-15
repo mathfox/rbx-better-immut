@@ -16,11 +16,13 @@ local original = require(script.original)
 local produce = require(script.produce)
 local table = require(script.table)
 local None = require(script.None)
+local makeDraftSafe = require(script.makeDraftSafe)
+local makeDraftSafeReadOnly = require(script.makeDraftSafeReadOnly)
 
 return {
 	createDraft = Draft.new,
-	current = finishDraft,
 	finishDraft = finishDraft,
+	current = finishDraft,
 	isDraft = isDraft,
 	isDraftable = isDraftable,
 	original = original,
@@ -28,4 +30,14 @@ return {
 	table = table,
 	None = None,
 	nothing = None,
+
+	makeDraftSafe = makeDraftSafe,
+	makeDraftSafeReadOnly = makeDraftSafeReadOnly,
+
+	remove = table.remove,
+	sort = table.sort,
+	clear = table.clear,
+	find = table.find,
+	concat = table.concat,
+	insert = table.insert,
 }
