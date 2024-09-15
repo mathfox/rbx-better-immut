@@ -1,7 +1,7 @@
 import { expect, it } from "@rbxts/jest-globals";
 import None from "./None";
-import produce from "./produce";
 import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
+import produce from "./produce";
 import readDraft from "./readDraft";
 
 it("should support returning nil when None is returned", () => {
