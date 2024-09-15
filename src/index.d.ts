@@ -11,13 +11,14 @@ import isDraft from "./isDraft";
 import isDraftable from "./isDraftable";
 import original from "./original";
 import produce from "./produce";
+import readDraft from "./readDraft";
 
 declare namespace Immut {
 	export function createDraft<TBase extends object>(base: TBase): Draft<TBase>;
 
 	export { finishDraft, finishDraft as current, isDraft, isDraftable, original, produce, table, None, None as nothing };
 
-	export { makeDraftSafe, makeDraftSafeReadOnly };
+	export { makeDraftSafe, makeDraftSafeReadOnly, readDraft };
 
 	export { remove, sort, clear, find, concat, insert };
 }

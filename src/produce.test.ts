@@ -1,6 +1,8 @@
 import { expect, it } from "@rbxts/jest-globals";
 import None from "./None";
 import produce from "./produce";
+import makeDraftSafeReadOnly from "./makeDraftSafeReadOnly";
+import readDraft from "./readDraft";
 
 it("should support returning nil when None is returned", () => {
 	expect(
@@ -145,4 +147,35 @@ it("should mutate maps", () => {
 		first: 1,
 		second: 2,
 	});
+});
+
+it("should not modify the table when nothing was done", () => {
+	const originalValue = {
+		value: 1,
+		value_1: {
+			value: 2,
+		},
+	};
+
+	expect(produce(originalValue, (draft) => {})).toBe(originalValue);
+});
+
+it("should not mutate the value when it was only read", () => {
+	const originalValue = new Map<string, {}>([["1", {}]]);
+
+	const get = (value: Map<unknown, unknown>, key: unknown): unknown => {
+		return value.get(key);
+	};
+
+	const safeGet = makeDraftSafeReadOnly(get);
+
+	const newValue = produce(originalValue, (draft) => {
+		const data = safeGet(draft, `${1}`);
+
+		const anotherData = makeDraftSafeReadOnly<typeof draft>((value) => value.get(`${1}`))(draft);
+
+		const data2 = readDraft(draft, (value) => value.get(`${1}`));
+	});
+
+	expect(newValue).toBe(originalValue);
 });

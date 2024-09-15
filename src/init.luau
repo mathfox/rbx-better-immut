@@ -33,6 +33,7 @@ return {
 
 	makeDraftSafe = makeDraftSafe,
 	makeDraftSafeReadOnly = makeDraftSafeReadOnly,
+	readDraft = require(script.readDraft),
 
 	remove = table.remove,
 	sort = table.sort,

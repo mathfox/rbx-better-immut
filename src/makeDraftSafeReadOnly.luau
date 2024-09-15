@@ -5,7 +5,7 @@
 local isDraft = require(script.Parent.isDraft)
 
 type Draft<K = any, V = any> = { [K]: V }
-type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
+type Reader<Args..., Return...> = (draft: Draft, Args...) -> Return...
 
 --[=[
 	@within table
@@ -30,7 +30,7 @@ type Mutator<Args..., Return...> = (draft: Draft, Args...) -> Return...
 	end)
     ```
 ]=]
-local function makeDraftSafeReadOnly<Args..., Return...>(fn: Mutator<Args..., Return...>): Mutator<Args..., Return...>
+local function makeDraftSafeReadOnly<TArgs..., TReturn...>(fn: Reader<TArgs..., TReturn...>): Reader<TArgs..., TReturn...>
 	return function(draft, ...)
 		local t = draft
 
